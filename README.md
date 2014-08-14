@@ -28,7 +28,7 @@ First of all you have to make a path
 var path = new THREEx.path([ [0, 0, 0], [3, 0, 0], [3, 3, 0], [-3, 2, -4] ]);
 ```
 
-When creating a new path you **HAVE** to input 2 dimensional array of all the points, it will now create a path between those points.
+When creating a new path you **HAVE** to input a 2 dimensional array of all the points, it will now create a path between those points.
 
 Next update the path in the render function
 
@@ -71,7 +71,7 @@ path.change(function(mesh) {
 ```
 
 And finally that will be called when the object reaches a new point in the array.
-All of those functions get one input that is the object it was called for.
+All of these functions get one input that is the object it was called for.
 
 **NOTE: This has been testes with meshes but should work with particals.**
 
