@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+  <script src='vendor/threejs/three.min.js'>script></script>
+  <script src='../threex.paths.js'></script>
+</head>
+<body style='margin: 0px;'>
+  <script>
+   var renderer = new THREE.WebGLRenderer({ alpha: true });
+   renderer.setClearColor( 0x000000, 1);
+   renderer.setSize( window.innerWidth, window.innerHeight );
+   document.body.appendChild( renderer.domElement );
+   
+   
+   var updateFcts = [];
+   var scene = new THREE.Scene();
+   var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 100 );
+   camera.position.y = 0;
+   camera.position.z = 10;
+
+   var light = new THREE.HemisphereLight(0xFFFFFF, 0x000000, 1)
+   scene.add( light );
+
+
+   var geometry = new THREE.CubeGeometry( 1, 1, 1);
+   var material = new THREE.MeshNormalMaterial();
+   var mesh = new THREE.Mesh( geometry, material );
+   scene.add( mesh );
+   
+   var path = new THREEx.path([ [0, 0, 0], [3, 0, 0], [3, 3, 0], [-3, 2, -4] ]);
+   
+   path.loop(function(mesh) {
+     alert("loop "+mesh);
+   });
+
+   path.follow(mesh, 0.01, true);
+
+   updateFcts.push(function(delta, now){
+     path.update(delta, now);
+   });
+
+   var lastTimeMsec = null
+   requestAnimationFrame(function animate(nowMsec){
+     renderer.render(scene, camera);
+     // keep looping
+     requestAnimationFrame( animate );
+     // measure time
+     lastTimeMsec = lastTimeMsec || nowMsec-1000/60;
+     var deltaMsec = Math.min(200, nowMsec - lastTimeMsec);
+     lastTimeMsec = nowMsec;
+     updateFcts.forEach(function(updateFn){
+       updateFn(deltaMsec/1000, nowMsec/1000);
+     });
+   });
+   
+  </script>
+</body>
