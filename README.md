@@ -10,13 +10,13 @@ How to install it
 =================
 You can install it via script tag
 
-'''html
+'''
 <script src='threex.paths.js'></script>
 '''
 
 Or you can install it with [bower](http://bower.io)
 
-'''bash
+'''
 bower install threex.paths
 '''
 
@@ -24,7 +24,7 @@ How to use it
 =============
 First of all you have to make a path
 
-'''javascript
+'''
 var path = new THREEx.path([ [0, 0, 0], [3, 0, 0], [3, 3, 0], [-3, 2, -4] ]);
 '''
 
@@ -32,7 +32,7 @@ When creating a new path you **HAVE** to input 2 dimensional array of all the po
 
 Next update the path in the render function
 
-'''javascript
+'''
 updateFcts.push(function(delta, now){	
 	path.update(delta, now);
 });
@@ -40,7 +40,7 @@ updateFcts.push(function(delta, now){
 
 So now you have a path that is being updated but there are no objects on it, to make a object follow a path run this
 
-'''javascript
+'''
 path.follow(object, 0.01, true);
 '''
 
@@ -48,7 +48,7 @@ The 1st variable that you input is the object that you want to follow, The 2nd v
 
 Some more functions are,
 
-'''javascript
+'''
 path.loop(function(mesh) {
   alert("loop "+mesh);
 });
@@ -56,7 +56,7 @@ path.loop(function(mesh) {
 
 That will be called when the object reaches the end and loops,
 
-'''javascript
+'''
 path.finish(function(mesh) {
   alert("finish "+mesh);
 });
@@ -64,7 +64,7 @@ path.finish(function(mesh) {
 
 That will be called when the object reaches the	end if loop is false,
 
-'''javascript
+'''
 path.change(function(mesh) {
   alert("change "+mesh);
 });
