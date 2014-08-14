@@ -10,9 +10,9 @@ How to install it
 =================
 You can install it via script tag
 
-'''
+```
 <script src='threex.paths.js'></script>
-'''
+```
 
 Or you can install it with [bower](http://bower.io)
 
