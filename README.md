@@ -73,7 +73,7 @@ path.change(function(mesh) {
 And finally that will be called when the object reaches a new point in the array.
 All of these functions get one input that is the object it was called for.
 
-**NOTE: This has been testes with meshes but should work with particals.**
+**NOTE: This has been tested with meshes but should work with particals.**
 
 Possible Improvements
 =====================
